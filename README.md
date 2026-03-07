@@ -1,10 +1,11 @@
 <div align="center">
 
-<img src="https://img.shields.io/badge/Version-2.0-00d4ff?style=for-the-badge&logo=python&logoColor=white" alt="Version"/>
-<img src="https://img.shields.io/badge/Python-3.8+-00d4ff?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
-<img src="https://img.shields.io/badge/License-MIT-00ff88?style=for-the-badge" alt="License"/>
-<img src="https://img.shields.io/badge/Encryption-AES--256--GCM-ff3355?style=for-the-badge&logo=letsencrypt&logoColor=white" alt="AES-256-GCM"/>
-<img src="https://img.shields.io/badge/Platform-Linux%20%7C%20Windows%20%7C%20macOS-666666?style=for-the-badge" alt="Platform"/>
+<img src="https://img.shields.io/badge/Version-3.0-A855F7?style=for-the-badge&logo=python&logoColor=white" alt="Version"/>
+<img src="https://img.shields.io/badge/Python-3.8+-A855F7?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
+<img src="https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge" alt="License"/>
+<img src="https://img.shields.io/badge/Cipher-XChaCha20--Poly1305-ef4444?style=for-the-badge" alt="XChaCha20"/>
+<img src="https://img.shields.io/badge/MAC-BLAKE2b--512-06b6d4?style=for-the-badge" alt="BLAKE2b"/>
+<img src="https://img.shields.io/badge/Nonce-192--Bit-eab308?style=for-the-badge" alt="Nonce"/>
 
 <br/><br/>
 
@@ -15,49 +16,53 @@
 ██║  ██║██║   ██║██╔═██╗ ██║╚██╗██║
 ██████╔╝╚██████╔╝██║  ██╗██║ ╚████║
 ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝
-         CRYPTO SUITE  v2.0
+    CRYPTO SUITE  v3.0
+    XChaCha20-Poly1305
 ```
 
-**Professionelle Datei-Verschlüsselung · AES-256-GCM · Open Source · Python**
+**Professionelle Dateiverschlüsselung · XChaCha20-Poly1305 · BLAKE2b-512 · Open Source**
 
-[🔒 Features](#-features) · [⚡ Quickstart](#-quickstart) · [🛡 Sicherheit](#-sicherheitsarchitektur) · [📊 Vergleich](#-vergleich-mit-anderen-tools) · [🤝 Contributing](#-contributing)
+[🔒 Features](#-features) · [⚡ Quickstart](#-quickstart) · [🛡 Sicherheit](#-sicherheitsarchitektur) · [📊 v2 vs v3](#-v20-vs-v30) · [🤝 Contributing](#-contributing)
 
 </div>
 
 ---
 
-## 📖 Was ist DGKN Crypto Suite?
+## 📖 Was ist DGKN Crypto Suite v3?
 
-DGKN Crypto Suite ist ein **Open-Source Tool zur Datei-Verschlüsselung** mit grafischer Oberfläche (GUI), entwickelt für Windows, Linux und macOS. Es verschlüsselt beliebige Dateien mit **AES-256-GCM** – demselben Algorithmus, den Banken, Regierungen und Sicherheitsdienste weltweit einsetzen.
+DGKN Crypto Suite v3 ist eine **Open-Source Datei-Verschlüsselungs-App** mit grafischer Oberfläche (GUI) für Windows, Linux und macOS. v3 verwendet **XChaCha20-Poly1305** – den modernen Nachfolger von AES-GCM, der von **Signal, WireGuard und libsodium** als Standard eingesetzt wird.
 
-> **Für Einsteiger:** Du wählst eine Datei, gibst ein Passwort ein – fertig. Die Datei ist danach für niemanden lesbar, der das Passwort nicht kennt.
+> **Für Einsteiger:** Datei wählen → Passwort eingeben → fertig. Die Datei ist danach für niemanden ohne das Passwort lesbar.
 
-> **Für Entwickler:** AES-256-GCM mit PBKDF2-HMAC-SHA256 (600.000 Iterationen), Key Separation, Authenticate-then-Decrypt, HMAC-Integritätsschutz, Streaming/Chunk-Verarbeitung.
+> **Für Entwickler:** XChaCha20-Poly1305 (192-Bit Nonce via HChaCha20) · PBKDF2-SHA512 (650K iter) · HKDF Key Separation · BLAKE2b-512 MAC · AAD Chunk-Binding · Authenticate-then-Decrypt · Streaming.
 
 ---
 
 ## ✨ Features
 
 ### 🔐 Sicherheit
-- **AES-256-GCM** – Authenticated Encryption (Vertraulichkeit + Integrität in einem)
-- **PBKDF2-HMAC-SHA256** mit 600.000 Iterationen (NIST SP 800-132 / 2023)
-- **Key Separation** – separate Schlüssel für Verschlüsselung & HMAC
-- **Authenticate-then-Decrypt** – Manipulation wird erkannt *bevor* entschlüsselt wird
-- **HMAC-Signatur** auf der Key-Datei – schützt Metadaten vor Manipulation
-- **Zufälliger 256-Bit Salt** pro Datei – kein Rainbow-Table-Angriff möglich
+- **XChaCha20-Poly1305** – Stream Cipher + MAC in einem (AEAD)
+- **192-Bit Nonce** – zufällig generierbar, praktisch keine Kollisionsgefahr
+- **HChaCha20 Subkey** – RFC-konforme Implementierung ohne externe Abhängigkeiten
+- **PBKDF2-HMAC-SHA512** mit 650.000 Iterationen (NIST 2024)
+- **HKDF Key Separation** – separate Schlüssel für Cipher und MAC
+- **BLAKE2b-512 MAC** – schneller und moderner als HMAC-SHA256
+- **AAD-Binding** – Chunk-Index + Salt-Hash gebunden ans Ciphertext
+- **Authenticate-then-Decrypt** – Manipulation erkannt *bevor* entschlüsselt wird
+- **Zufälliger 256-Bit Salt** pro Datei
 
 ### 🖥 Benutzerfreundlichkeit
 - **Grafische Oberfläche** (tkinter) – keine Terminal-Kenntnisse nötig
 - **Drag & Drop** Dateiauswahl
-- **Echtzeit-Fortschrittsanzeige** (kein Fake-Progress!)
-- **Passwort-Stärke-Indikator** mit Echtzeit-Feedback
-- **Automatische Key-Datei-Erkennung**
+- **Echtzeit-Fortschrittsanzeige** (echter Chunk-Fortschritt)
+- **Passwort-Stärke + Entropie in Bits** (z.B. 118 Bit für starke Passwörter)
+- **v2 vs v3 Vergleichs-Tab** direkt in der App
 
-### ⚙️ Technische Stärken
-- **Streaming / Chunk-Verarbeitung** (64 KB) – auch 100+ GB Dateien problemlos
-- **Thread-sicheres UI** – kein Einfrieren während der Verschlüsselung
-- **Secure Delete** (optional) – 3-Pass Überschreiben der Originaldatei
-- **Generische Fehlermeldungen** – kein Python-Traceback für Angreifer sichtbar
+### ⚙️ Technisch
+- **Streaming / Chunk-Verarbeitung** (64 KB) – auch 100+ GB Dateien
+- **Thread-sicheres UI** via `root.after()` – kein Einfrieren
+- **Secure Delete** (3-Pass `os.urandom` + `fsync`)
+- **Generische Fehlermeldungen** – kein Traceback nach außen
 
 ---
 
@@ -65,8 +70,8 @@ DGKN Crypto Suite ist ein **Open-Source Tool zur Datei-Verschlüsselung** mit gr
 
 ### Voraussetzungen
 
-```bash
-Python 3.8 oder höher
+```
+Python 3.8+
 ```
 
 ### Installation
@@ -74,159 +79,26 @@ Python 3.8 oder höher
 ```bash
 # 1. Repository klonen
 git clone https://github.com/dogenc/dgknCryptoSuite.git
-cd dgknCryptoSuite
+cd dgknCryptoSuite/v3
 
-# 2. Abhängigkeiten installieren
+# 2. Abhängigkeit installieren
 pip install cryptography
 
-# Tkinter installieren (Linux)
+# tkinter (Linux)
 sudo apt install python3-tk       # Debian / Ubuntu / Kali
 sudo dnf install python3-tkinter  # Fedora
 sudo pacman -S tk                 # Arch
 
 # 3. Starten
-python3 dgkn_crypto_v2.py
+python3 dgkn_crypto_v3.py
 ```
 
-### Windows
-
-```powershell
-# Python von https://python.org installieren (tkinter ist enthalten)
-pip install cryptography
-python dgkn_crypto_v2.py
-```
-
-### macOS
+### Windows / macOS
 
 ```bash
-brew install python-tk
-pip3 install cryptography
-python3 dgkn_crypto_v2.py
-```
-
----
-
-## 🖼 Screenshots
-
-> 📸 *Screenshots folgen – Pull Requests mit Screenshots willkommen!*
-
-```
-┌─────────────────────────────────────────────┐
-│  DGKN  CRYPTO  SUITE          v2.0          │
-├─────────────────────────────────────────────┤
-│  🔒 Verschlüsseln  │ 🔓 Entschlüsseln │ ℹ  │
-├─────────────────────────────────────────────┤
-│                                             │
-│   📂  Datei auswählen  (Klick / Drag&Drop) │
-│                                             │
-│   Passwort:        [●●●●●●●●●●●●●●●●]      │
-│   Bestätigen:      [●●●●●●●●●●●●●●●●]      │
-│                                             │
-│   Stärke: ████████████████░░  Sehr stark   │
-│                                             │
-│   ☑ Originaldatei sicher löschen (3-Pass)  │
-│                                             │
-│   [ 🔒 Jetzt verschlüsseln ]               │
-├─────────────────────────────────────────────┤
-│  ✔ Bereit              Fortschritt: ████░  │
-└─────────────────────────────────────────────┘
-```
-
----
-
-## 🛡 Sicherheitsarchitektur
-
-### Dateiformat `.dgkn2`
-
-```
-┌──────────────────────────────────────────────────────┐
-│ Magic       5 Bytes   "DGKN2"  (Format-Kennung)      │
-│ Version     1 Byte    Format-Version                  │
-│ Salt       32 Bytes   PBKDF2-Salt  (256-Bit Zufall)  │
-│ N_Chunks    4 Bytes   Anzahl Chunks (uint32)          │
-│ ── pro Chunk: ──────────────────────────────────────  │
-│   Nonce_i  12 Bytes   GCM-Nonce  (einzigartig/Chunk) │
-│   Len_i     4 Bytes   Ciphertext-Länge                │
-│   Data_i   var        AES-256-GCM Ciphertext + Tag    │
-│ ── Ende: ───────────────────────────────────────────  │
-│ HMAC       32 Bytes   HMAC-SHA256 über alles oben     │
-└──────────────────────────────────────────────────────┘
-```
-
-### Schlüsselableitung
-
-```
-Passwort + Salt (256-Bit)
-        │
-        ▼
-PBKDF2-HMAC-SHA256
-(600.000 Iterationen)
-        │
-        ▼  64 Bytes
-   ┌────┴────┐
-   │         │
-enc_key   mac_key
-(32 B)    (32 B)
-AES-256   HMAC-SHA256
-```
-
-### Warum AES-256-GCM?
-
-| Eigenschaft | AES-256-GCM | AES-128-CBC (veraltet) |
-|---|---|---|
-| Schlüssellänge | 256 Bit | 128 Bit |
-| Authentifizierung | ✅ eingebaut (GCM-Tag) | ❌ separat nötig |
-| Manipulation erkennbar | ✅ sofort | ❌ nicht ohne MAC |
-| Padding-Angriffe | ✅ immun | ⚠️ anfällig (POODLE etc.) |
-| NIST-Status | ✅ empfohlen | ⚠️ nur mit Vorsicht |
-
-### Passwort-Sicherheit
-
-> **Faustregel:** Je länger das Passwort, desto sicherer – auch mit PBKDF2.
-
-| Passwort-Typ | Beispiel | Sicherheit |
-|---|---|---|
-| Kurz / einfach | `hund123` | ❌ Minuten |
-| Mittel | `Hund123!` | ⚠️ Stunden–Tage |
-| Lang + komplex | `Tr0ub4dor&3#Kaffee!` | ✅ Jahrzehnte+ |
-| Passphrase | `korrekt-pferd-batterie-heftklammer` | ✅ Sehr sicher |
-
----
-
-## 📊 Vergleich mit anderen Tools
-
-| Feature | **DGKN v2.0** | VeraCrypt | GPG | 7-Zip | Cryptomator |
-|---|:---:|:---:|:---:|:---:|:---:|
-| AES-256-GCM | ✅ | ⚠️ XTS | ✅ | ✅ | ✅ |
-| GUI | ✅ | ✅ | ❌ CLI | ✅ | ✅ |
-| Open Source | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Einzeldateien | ✅ | ⚠️ Container | ✅ | ✅ | ✅ |
-| Streaming (große Dateien) | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Secure Delete | ✅ | ✅ | ❌ | ❌ | ❌ |
-| HMAC Integritätsschutz | ✅ | ✅ | ✅ | ❌ | ✅ |
-| Kein Account nötig | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Mobil (iOS/Android) | ❌ | ❌ | ❌ | ❌ | ✅ |
-| Laufwerk-Verschlüsselung | ❌ | ✅ | ❌ | ❌ | ❌ |
-| Python / portabel | ✅ | ❌ | ❌ | ❌ | ❌ |
-
-**DGKN eignet sich besonders für:** Einzeldateien verschlüsseln, volle Code-Kontrolle, plattformübergreifend ohne Installation eines großen Tools.
-
----
-
-## 📁 Projektstruktur
-
-```
-dgknCryptoSuite/
-│
-├── dgkn_crypto_v2.py      # Hauptprogramm (alles in einer Datei)
-├── README.md              # Diese Datei
-├── LICENSE                # MIT Lizenz
-├── requirements.txt       # Python-Abhängigkeiten
-│
-└── examples/              # Beispieldateien (optional)
-    ├── test.txt
-    ├── test.dgkn2
-    └── test.key2
+pip install cryptography
+python3 dgkn_crypto_v3.py
+# tkinter ist bei Windows/macOS Python bereits enthalten
 ```
 
 ### `requirements.txt`
@@ -237,150 +109,205 @@ cryptography>=41.0.0
 
 ---
 
-## 🔧 Verwendung (CLI-Modus)
+## 🖼 Screenshots
 
-Die Crypto-Engine kann auch ohne GUI direkt in Python genutzt werden:
+> 📸 *Screenshots willkommen – Pull Request erstellen!*
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│  ◈  DGKN  CRYPTO  SUITE          v3.0 · XChaCha20-Poly1305  │
+├──────────────────────────────────────────────────────────────┤
+│  XChaCha20-Poly1305 │ 192-Bit Nonce │ PBKDF2-SHA512 │ ... │
+├──────────────────────────────────────────────────────────────┤
+│  🔒 Verschlüsseln │ 🔓 Entschlüsseln │ 📊 v2 vs v3 │ ℹ Info │
+├──────────────────────────────────────────────────────────────┤
+│                                                              │
+│  📂  Datei auswählen  —  Klick oder Drag & Drop             │
+│                                                              │
+│  Passwort:    [●●●●●●●●●●●●●●●●●●●]                         │
+│  Bestätigen:  [●●●●●●●●●●●●●●●●●●●]  ✔ Stimmen überein     │
+│                                                              │
+│  Stärke:  ████████████████████  Sehr stark  118 Bit         │
+│                                                              │
+│  ☑ Originaldatei sicher löschen (3-Pass os.urandom)         │
+│                                                              │
+│  [ 🔒 Jetzt verschlüsseln ]                                  │
+├──────────────────────────────────────────────────────────────┤
+│  ✔ Bereit                          Fortschritt: ██████░░  │
+└──────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🛡 Sicherheitsarchitektur
+
+### Dateiformat `.dgkn3`
+
+```
+┌───────────────────────────────────────────────────────────┐
+│ Magic       5 B    "DGKN3"  (Format-Kennung)              │
+│ FormatVer   1 B    Version 1                              │
+│ Salt       32 B    PBKDF2-Salt  (256-Bit Zufall)          │
+│ N_Chunks    4 B    Anzahl Chunks  (uint32)                 │
+│ ── pro Chunk: ────────────────────────────────────────── │
+│   Nonce    24 B    XChaCha20 Nonce  (192-Bit Zufall)      │
+│   Len       4 B    Ciphertext-Länge                       │
+│   AAD      32 B    Chunk-Index + Salt-Hash  (gebunden)    │
+│   CT       var     XChaCha20-Poly1305 + 16-B Poly1305 Tag │
+│ ── Ende: ──────────────────────────────────────────────── │
+│ BLAKE2b    64 B    MAC über gesamte Datei                 │
+└───────────────────────────────────────────────────────────┘
+```
+
+### Schlüsselableitung
+
+```
+Passwort  +  Salt (256-Bit)
+        │
+        ▼
+PBKDF2-HMAC-SHA512
+(650.000 Iterationen)
+        │
+        ▼  64 Bytes Master Secret
+   ┌────┴────────────┐
+   │                 │
+HKDF (info=enc)   HKDF (info=mac)
+   │                 │
+enc_key (32B)     mac_key (32B)
+XChaCha20         BLAKE2b-512
+```
+
+### Warum XChaCha20-Poly1305?
+
+| Eigenschaft | XChaCha20-Poly1305 | AES-256-GCM |
+|---|---|---|
+| Nonce-Größe | **192 Bit** (24 Byte) | 96 Bit (12 Byte) |
+| Nonce zufällig sicher | ✅ immer | ⚠️ Vorsicht bei >2^32 Msgs |
+| ARM / ohne AES-Hardware | ✅ Schnell | ⚠️ Langsam |
+| x86 mit AES-NI | ✅ Schnell | ✅ Sehr schnell |
+| Genutzt von | Signal, WireGuard, libsodium | TLS 1.3, HTTPS |
+| NIST-Standard | ❌ (IETF RFC 8439) | ✅ |
+| Empfohlen für | **Alle Geräte** | Server mit AES-NI |
+
+### AAD – Chunk-Binding (neu in v3)
 
 ```python
-from dgkn_crypto_v2 import CryptoEngineV2
+AAD = struct.pack(">I", chunk_index)     # 4 Bytes
+    + blake2b(salt, digest_size=28)      # 28 Bytes
+                                         # = 32 Bytes gesamt
+```
+
+→ Jeder Chunk ist an seine Position und den Salt gebunden.
+→ Chunks können nicht umgeordnet, ausgetauscht oder kopiert werden.
+
+---
+
+## 📊 v2.0 vs v3.0
+
+| Eigenschaft | v2.0 | v3.0 |
+|---|---|---|
+| Cipher | AES-256-GCM | **XChaCha20-Poly1305** |
+| Nonce-Größe | 96 Bit | **192 Bit** |
+| Nonce-Kollision | 1/2^32 bei 4 Mrd. Msgs | **Praktisch unmöglich** |
+| ARM / ohne AES-NI | Langsam | **Schnell** |
+| KDF | PBKDF2-SHA256 / 600K | **PBKDF2-SHA512 / 650K** |
+| MAC | HMAC-SHA256 (32 B) | **BLAKE2b-512 (64 B)** |
+| AAD Chunk-Binding | ❌ | ✅ |
+| Dateiendung | `.dgkn2` / `.key2` | `.dgkn3` / `.key3` |
+| Kompatibilität | — | Nicht zu v2 kompatibel |
+
+> v2 ist weiterhin im Repository unter `/v2/` verfügbar.
+
+---
+
+## 📁 Projektstruktur
+
+```
+dgknCryptoSuite/
+│
+├── README.md                  ← Diese Datei (v3)
+├── LICENSE                    ← MIT
+├── requirements.txt
+│
+├── v3/                        ← Empfohlen
+│   └── dgkn_crypto_v3.py
+│
+└── v2/                        ← Legacy (AES-256-GCM)
+    └── dgkn_crypto_v2.py
+```
+
+---
+
+## 🔧 API – ohne GUI verwenden
+
+```python
+from dgkn_crypto_v3 import CryptoEngineV3
 
 # Datei verschlüsseln
-ok, enc_path, key_path, meta = CryptoEngineV2.encrypt_file(
+ok, enc_path, key_path, meta = CryptoEngineV3.encrypt_file(
     src_path   = "geheim.pdf",
     password   = "MeinSicheresPasswort!42",
     output_dir = "./encrypted/",
-    secure_del = False,          # True = Original sicher löschen
+    secure_del = False,
 )
-
 if ok:
-    print(f"✔ Verschlüsselt: {enc_path}")
-    print(f"  Key-Datei:     {key_path}")
-    print(f"  Algorithmus:   {meta['algo']}")
+    print(f"Algorithmus: {meta['algo']}")   # XChaCha20-Poly1305
+    print(f"MAC:         {meta['mac']}")    # BLAKE2b-512
 
 # Datei entschlüsseln
-ok, out_path, meta, _ = CryptoEngineV2.decrypt_file(
-    dgkn_path  = "geheim.dgkn2",
+ok, out_path, meta, _ = CryptoEngineV3.decrypt_file(
+    dgkn_path  = "geheim.dgkn3",
     password   = "MeinSicheresPasswort!42",
-    key_path   = "geheim.key2",
+    key_path   = "geheim.key3",
     output_dir = "./decrypted/",
 )
-
-if ok:
-    print(f"✔ Entschlüsselt: {out_path}")
-else:
-    print(f"✘ Fehler: {out_path}")
 ```
 
 ---
 
 ## 🤝 Contributing
 
-Beiträge sind herzlich willkommen! So kannst du mitmachen:
-
-### Bug melden
-
-1. [Issue öffnen](https://github.com/dogenc/dgknCryptoSuite/issues/new)
-2. Folgendes angeben:
-   - Betriebssystem & Python-Version
-   - Fehlerbeschreibung
-   - Schritte zum Reproduzieren
-   - Fehlermeldung (falls vorhanden)
-
-### Feature vorschlagen
-
-1. [Issue öffnen](https://github.com/dogenc/dgknCryptoSuite/issues/new) mit Label `enhancement`
-2. Beschreibe den Anwendungsfall
-3. Diskussion im Issue – dann ggf. Pull Request
-
-### Code beitragen
-
 ```bash
-# 1. Fork erstellen (GitHub: Fork-Button oben rechts)
+# Fork → Clone → Branch
+git checkout -b feature/mein-feature
 
-# 2. Lokal klonen
-git clone https://github.com/DEIN-USERNAME/dgknCryptoSuite.git
-cd dgknCryptoSuite
+# Commit
+git commit -m "feat: Beschreibung"
 
-# 3. Branch erstellen
-git checkout -b feature/mein-neues-feature
-
-# 4. Änderungen machen & committen
-git add .
-git commit -m "feat: Beschreibung des Features"
-
-# 5. Push & Pull Request
-git push origin feature/mein-neues-feature
-# → GitHub: Pull Request erstellen
-```
-
-### Commit-Konventionen
-
-```
-feat:     Neues Feature
-fix:      Bugfix
-docs:     Dokumentation
-security: Sicherheitsrelevante Änderung
-refactor: Code-Umbau ohne Funktionsänderung
+# Push → Pull Request
+git push origin feature/mein-feature
 ```
 
 ### Ideen für Contributions
 
-- [ ] 🌍 Mehrsprachigkeit (EN/DE/FR)
-- [ ] 📱 Mobile Version (Kivy?)
-- [ ] 🗂 Ordner-Verschlüsselung (ZIP + encrypt)
-- [ ] 🔑 YubiKey / Hardware-Token Support
-- [ ] 🖼 Screenshots & Demo-GIFs für README
+- [ ] 🌍 Englische Übersetzung
 - [ ] 🧪 Unit Tests (pytest)
 - [ ] 📦 pip-Package (`pip install dgkn-crypto`)
+- [ ] 🗂 Ordner-Verschlüsselung
+- [ ] 🖼 Screenshots & Demo-GIF
+- [ ] 📱 Mobile Version (Kivy)
 
 ---
 
 ## ⚠️ Sicherheitshinweise
 
 > **Passwort vergessen = Daten unwiederbringlich verloren.**
-> Es gibt keine Passwort-Wiederherstellung – das ist gewollt.
 
-- Bewahre `.dgkn2` und `.key2` **immer zusammen** auf
-- Mache **Backups** der Key-Dateien an einem sicheren Ort
-- Verwende ein **starkes Passwort** (≥ 16 Zeichen empfohlen)
-- DGKN schützt **Dateien**, keine ganzen Laufwerke – für Laufwerke: VeraCrypt
+- `.dgkn3` und `.key3` **immer zusammen** aufbewahren
+- **Backups** der `.key3` Dateien anlegen
+- Empfohlene Passwortlänge: **≥ 16 Zeichen** (≥ 80 Bit Entropie)
+- `.dgkn3` Dateien sind **nicht kompatibel** mit v2
 
 ### Sicherheitslücke melden
 
-Bitte **keine** öffentlichen Issues für Sicherheitslücken!  
-→ Direkt per GitHub Private Vulnerability Reporting oder E-Mail an den Maintainer.
+Bitte **keine** öffentlichen Issues für Sicherheitslücken!
+→ GitHub Private Vulnerability Reporting verwenden.
 
 ---
 
 ## 📜 Lizenz
 
-```
-MIT License
-
-Copyright (c) 2026 dogenc
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-```
-
----
-
-## 🙏 Danksagungen
-
-- [**cryptography**](https://cryptography.io) – Python Kryptographie-Bibliothek
-- [**NIST**](https://csrc.nist.gov) – AES & PBKDF2 Standards
-- Community-Feedback & BlackBox.AI Code-Review für v2.0
+MIT License · Copyright (c) 2026 dogenc
 
 ---
 
@@ -388,6 +315,6 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 Made with ❤️ by [dogenc](https://github.com/dogenc)
 
-⭐ **Wenn dir das Projekt gefällt, gib ihm einen Stern!** ⭐
+⭐ **Wenn dir das Projekt gefällt – gib ihm einen Stern!** ⭐
 
 </div>
