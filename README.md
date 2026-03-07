@@ -111,33 +111,8 @@ cryptography>=41.0.0
 
 ## 🖼 Screenshots
 
-> 📸 *Screenshots willkommen – Pull Request erstellen!*
-
-```
-┌──────────────────────────────────────────────────────────────┐
-│  ◈  DGKN  CRYPTO  SUITE          v3.0 · XChaCha20-Poly1305  │
-├──────────────────────────────────────────────────────────────┤
-│  XChaCha20-Poly1305 │ 192-Bit Nonce │ PBKDF2-SHA512 │ ... │
-├──────────────────────────────────────────────────────────────┤
-│  🔒 Verschlüsseln │ 🔓 Entschlüsseln │ 📊 v2 vs v3 │ ℹ Info │
-├──────────────────────────────────────────────────────────────┤
-│                                                              │
-│  📂  Datei auswählen  —  Klick oder Drag & Drop             │
-│                                                              │
-│  Passwort:    [●●●●●●●●●●●●●●●●●●●]                         │
-│  Bestätigen:  [●●●●●●●●●●●●●●●●●●●]  ✔ Stimmen überein     │
-│                                                              │
-│  Stärke:  ████████████████████  Sehr stark  118 Bit         │
-│                                                              │
-│  ☑ Originaldatei sicher löschen (3-Pass os.urandom)         │
-│                                                              │
-│  [ 🔒 Jetzt verschlüsseln ]                                  │
-├──────────────────────────────────────────────────────────────┤
-│  ✔ Bereit                          Fortschritt: ██████░░  │
-└──────────────────────────────────────────────────────────────┘
-```
-
----
+> 📸 *Screenshots*
+<img src=https://github.com/dogenc/dgknCryptoSuite/blob/main/previewv.png/>
 
 ## 🛡 Sicherheitsarchitektur
 
