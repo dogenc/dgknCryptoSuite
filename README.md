@@ -1,335 +1,262 @@
 <div align="center">
 
-<img src="https://img.shields.io/badge/Version-3.0-A855F7?style=for-the-badge&logo=python&logoColor=white" alt="Version"/>
-<img src="https://img.shields.io/badge/Python-3.8+-A855F7?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
-<img src="https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge" alt="License"/>
-<img src="https://img.shields.io/badge/Cipher-XChaCha20--Poly1305-ef4444?style=for-the-badge" alt="XChaCha20"/>
-<img src="https://img.shields.io/badge/MAC-BLAKE2b--512-06b6d4?style=for-the-badge" alt="BLAKE2b"/>
-<img src="https://img.shields.io/badge/Nonce-192--Bit-eab308?style=for-the-badge" alt="Nonce"/>
-
-<br/><br/>
-
 ```
-    ██████╗  ██████╗ ██╗  ██╗███╗   ██╗
-    ██╔══██╗██╔════╝ ██║ ██╔╝████╗  ██║
-    ██║  ██║██║  ███╗█████╔╝ ██╔██╗ ██║
-    ██║  ██║██║   ██║██╔═██╗ ██║╚██╗██║
-    ██████╔╝╚██████╔╝██║  ██╗██║ ╚████║
-    ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝
-CRYPTO SUITE  v3.0
-XChaCha20-Poly1305
+██████╗  ██████╗ ██╗  ██╗███╗   ██╗
+██╔══██╗██╔════╝ ██║ ██╔╝████╗  ██║
+██║  ██║██║  ███╗█████╔╝ ██╔██╗ ██║
+██║  ██║██║   ██║██╔═██╗ ██║╚██╗██║
+██████╔╝╚██████╔╝██║  ██╗██║ ╚████║
+╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝
 ```
 
-**Professionelle Dateiverschlüsselung · XChaCha20-Poly1305 · BLAKE2b-512 · Open Source**
+# DGKN Crypto Suite v5.0
 
-[🔒 Features](#-features) · [⚡ Quickstart](#-quickstart) · [🛡 Sicherheit](#-sicherheitsarchitektur) · [📊 v2 vs v3](#-v20-vs-v30) · [🤝 Contributing](#-contributing)
+### Professionelle Dateiverschlüsselung mit Hidden Volumes, Keyfiles & Emergency Wipe
+
+[![GitHub](https://img.shields.io/badge/GitHub-dogenc%2FdgknCryptoSuite-black?style=flat-square&logo=github)](https://github.com/dogenc/dgknCryptoSuite)
+[![Release](https://img.shields.io/badge/Release-v5.0-purple?style=flat-square)](https://github.com/dogenc/dgknCryptoSuite/releases)
+[![EXE](https://img.shields.io/badge/Download-.EXE-blue?style=flat-square&logo=windows)](https://github.com/dogenc/dgknCryptoSuite/releases/latest)
+[![Crypto](https://img.shields.io/badge/Algo-XChaCha20--Poly1305-orange?style=flat-square)](#sicherheit)
+[![KDF](https://img.shields.io/badge/KDF-PBKDF2--SHA512-red?style=flat-square)](#sicherheit)
+[![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey?style=flat-square&logo=windows)](https://github.com/dogenc/dgknCryptoSuite/releases/latest)
+[![License](https://img.shields.io/badge/Lizenz-MIT-green?style=flat-square)](#lizenz)
+
+<br>
+
+> **Keine Installation. Keine Python. Einfach herunterladen und starten.**
+>
+> `dgkn_crypto_v5.exe` — läuft direkt auf jedem Windows-System ab Windows 10.
 
 </div>
 
 ---
 
-## 📖 Was ist DGKN Crypto Suite v3?
+## ⚡ Download
 
-DGKN Crypto Suite v3 ist eine **Open-Source Datei-Verschlüsselungs-App** mit grafischer Oberfläche (GUI) für Windows, Linux und macOS. v3 verwendet **XChaCha20-Poly1305** – den modernen Nachfolger von AES-GCM, der von **Signal, WireGuard und libsodium** als Standard eingesetzt wird.
+| Datei | Beschreibung |
+|-------|-------------|
+| [`dgkn_crypto_v5.exe`](https://github.com/dogenc/dgknCryptoSuite/releases/latest) | **Windows EXE — direkt ausführbar, keine Installation nötig** |
+| [`dgkn_crypto_v5.py`](https://github.com/dogenc/dgknCryptoSuite/releases/latest) | Python Quellcode (Windows / Linux / macOS) |
 
-> **Für Einsteiger:** Datei wählen → Passwort eingeben → fertig. Die Datei ist danach für niemanden ohne das Passwort lesbar.
-
-> **Für Entwickler:** XChaCha20-Poly1305 (192-Bit Nonce via HChaCha20) · PBKDF2-SHA512 (650K iter) · HKDF Key Separation · BLAKE2b-512 MAC · AAD Chunk-Binding · Authenticate-then-Decrypt · Streaming.
-
----
-
-## ✨ Features
-
-### 🔐 Sicherheit
-- **XChaCha20-Poly1305** – Stream Cipher + MAC in einem (AEAD)
-- **192-Bit Nonce** – zufällig generierbar, praktisch keine Kollisionsgefahr
-- **HChaCha20 Subkey** – RFC-konforme Implementierung ohne externe Abhängigkeiten
-- **PBKDF2-HMAC-SHA512** mit 650.000 Iterationen (NIST 2024)
-- **HKDF Key Separation** – separate Schlüssel für Cipher und MAC
-- **BLAKE2b-512 MAC** – schneller und moderner als HMAC-SHA256
-- **AAD-Binding** – Chunk-Index + Salt-Hash gebunden ans Ciphertext
-- **Authenticate-then-Decrypt** – Manipulation erkannt *bevor* entschlüsselt wird
-- **Zufälliger 256-Bit Salt** pro Datei
-
-### 🖥 Benutzerfreundlichkeit
-- **Grafische Oberfläche** (tkinter) – keine Terminal-Kenntnisse nötig
-- **Drag & Drop** Dateiauswahl
-- **Echtzeit-Fortschrittsanzeige** (echter Chunk-Fortschritt)
-- **Passwort-Stärke + Entropie in Bits** (z.B. 118 Bit für starke Passwörter)
-- **v2 vs v3 Vergleichs-Tab** direkt in der App
-
-### ⚙️ Technisch
-- **Streaming / Chunk-Verarbeitung** (64 KB) – auch 100+ GB Dateien
-- **Thread-sicheres UI** via `root.after()` – kein Einfrieren
-- **Secure Delete** (3-Pass `os.urandom` + `fsync`)
-- **Generische Fehlermeldungen** – kein Traceback nach außen
+> Die EXE enthält Python und alle Abhängigkeiten gebündelt — **kein Setup, keine Voraussetzungen, kein Microsoft Store**.
+> Herunterladen, doppelklicken, fertig.
 
 ---
 
-## ⚡ Quickstart
+## Was ist DGKN Crypto Suite?
 
-### Voraussetzungen
+DGKN Crypto Suite ist eine **quelloffene, kostenlose Verschlüsselungssoftware** für Windows mit moderner grafischer Benutzeroberfläche. Sie ermöglicht:
 
-```
-Python 3.8+
-```
+- Dateien und Ordner in **verschlüsselte Container** zu packen — ähnlich wie VeraCrypt
+- Einzelne Dateien direkt zu **ver- und entschlüsseln** (Original wird dabei sicher gelöscht)
+- **Versteckte Volumes** (Hidden Volumes) für glaubhafte Abstreitbarkeit (Plausible Deniability)
+- **Notfall-Wipe** per Tastenkürzel — alle offenen Volumes sofort sicher schließen
 
-### Installation
-
-```bash
-# 1. Repository klonen
-git clone https://github.com/dogenc/dgknCryptoSuite.git
-cd dgknCryptoSuite/v3
-
-# 2. Abhängigkeit installieren
-pip install cryptography
-
-# tkinter (Linux)
-sudo apt install python3-tk       # Debian / Ubuntu / Kali
-sudo dnf install python3-tkinter  # Fedora
-sudo pacman -S tk                 # Arch
-
-# 3. Starten
-python3 dgkn_crypto_v3.py
-```
-
-### Windows / macOS
-
-```bash
-pip install cryptography
-python3 dgkn_crypto_v3.py
-# tkinter ist bei Windows/macOS Python bereits enthalten
-```
-
-### `requirements.txt`
-
-```
-cryptography>=41.0.0
-```
+Alles in einer einzigen `.exe`-Datei. Kein Account. Keine Cloud. Keine Telemetrie. Keine Werbung.
 
 ---
 
-## 🖼 Screenshots
+## Features
 
-> 📸 *Screenshots*
-<img src=https://github.com/dogenc/dgknCryptoSuite/blob/main/previewv.png/>
+### 🔐 Container-Verschlüsselung
+- Beliebig große verschlüsselte Container erstellen (10 MB bis mehrere GB)
+- Container **öffnen (mounten)** — Dateien erscheinen in einem temporären Ordner
+- Nach dem Bearbeiten **speichern (unmounten)** — alles wird automatisch re-verschlüsselt
+- Temp-Verzeichnis wird nach dem Schließen **sicher überschrieben und gelöscht**
 
-## 🛡 Sicherheitsarchitektur
+### 🕵 Hidden Volumes
+- Ein Container, **zwei Passwörter, zwei komplett getrennte Bereiche**
+- Passwort A → normaler Bereich
+- Passwort B → versteckter Bereich mit sensiblen Dateien
+- Beide Bereiche sind kryptografisch **nicht voneinander zu unterscheiden**
+- Plausible Deniability: niemand kann beweisen, dass ein zweites Volume existiert
 
-### Dateiformat `.dgkn3`
+### 🔒 Einzeldatei-Verschlüsselung
+- Jede Datei direkt verschlüsseln — **Original wird sicher gelöscht**, `.dgkn5`-Datei erscheint
+- Entschlüsseln stellt den **Original-Dateinamen automatisch** wieder her
+- Verschlüsselte Datei wird nach Entschlüsselung **sicher gelöscht**
+- Keyfile als zweiter Faktor unterstützt
 
-```
-┌───────────────────────────────────────────────────────────┐
-│ Magic       5 B    "DGKN3"  (Format-Kennung)              │
-│ FormatVer   1 B    Version 1                              │
-│ Salt       32 B    PBKDF2-Salt  (256-Bit Zufall)          │
-│ N_Chunks    4 B    Anzahl Chunks  (uint32)                 │
-│ ── pro Chunk: ────────────────────────────────────────── │
-│   Nonce    24 B    XChaCha20 Nonce  (192-Bit Zufall)      │
-│   Len       4 B    Ciphertext-Länge                       │
-│   AAD      32 B    Chunk-Index + Salt-Hash  (gebunden)    │
-│   CT       var     XChaCha20-Poly1305 + 16-B Poly1305 Tag │
-│ ── Ende: ──────────────────────────────────────────────── │
-│ BLAKE2b    64 B    MAC über gesamte Datei                 │
-└───────────────────────────────────────────────────────────┘
-```
+### 🔑 Keyfiles
+- Jede beliebige Datei als zweiten Faktor verwenden (Foto, MP3, PDF, USB-Datei …)
+- Ohne die exakte Keyfile-Datei ist der Container **nicht zu öffnen**, auch nicht bei richtigem Passwort
+- Keyfile auf separatem USB-Stick = Hardware-Zwei-Faktor-Authentifizierung
 
-### Schlüsselableitung
+### 🚨 Sicherheits-Features
+- **Emergency Wipe** (`Ctrl+Shift+W`) — alle Volumes sofort schließen, Temp-Daten sicher löschen
+- Optional: Container-Header beim Wipe zerstören → Container dauerhaft unlesbar
+- **Auto-Unmount** — automatisches Speichern nach konfigurierbarer Inaktivitätsdauer
+- **Header-Backup & Restore** — JSON-Sicherungskopie, Schutz vor Bit-Corruption
+- **Passwort ändern** ohne den Container neu erstellen zu müssen
 
-```
-Passwort  +  Salt (256-Bit)
-        │
-        ▼
-PBKDF2-HMAC-SHA512
-(650.000 Iterationen)
-        │
-        ▼  64 Bytes Master Secret
-   ┌────┴────────────┐
-   │                 │
-HKDF (info=enc)   HKDF (info=mac)
-   │                 │
-enc_key (32B)     mac_key (32B)
-XChaCha20         BLAKE2b-512
-```
+### 🖥 Oberfläche
+- Modernes dunkles Design
+- Animierter **Splash Screen** mit Matrix-Regen-Effekt beim Start
+- **Dashboard** mit Live-Anzeige aller aktiven Volumes und Buttons
+- **Aktivitäts-Log** mit Timestamps für alle sicherheitsrelevanten Aktionen
+- Vollständige Pfad-Vorschau, automatische Dateinamenerkennung
+
+---
+
+## Sicherheit
+
+### Eingesetzte Algorithmen
+
+| Komponente | Algorithmus | Details |
+|-----------|-------------|---------|
+| Verschlüsselung | **XChaCha20-Poly1305** | 256-bit Key, 192-bit Nonce, 128-bit Auth-Tag (AEAD) |
+| Schlüsselableitung | **PBKDF2-SHA512** | 650.000 Iterationen, 64-Byte Output |
+| Schlüsselexpansion | **HKDF-SHA256** | Separate Schlüssel für NORM / HIDE / FILE |
+| Keyfile-Hash | **BLAKE2b-256** | Wird vor KDF an Passwort konkateniert |
+| Salt | **CSPRNG** | 256-bit, zufällig, einmalig pro Container |
+| Nonce | **CSPRNG** | 192-bit, einmalig pro Verschlüsselungsoperation |
+| Authentifizierung | **Verschlüsselter Sentinel** | Kein Klartext-Passwort-Vergleich |
 
 ### Warum XChaCha20-Poly1305?
 
-| Eigenschaft | XChaCha20-Poly1305 | AES-256-GCM |
-|---|---|---|
-| Nonce-Größe | **192 Bit** (24 Byte) | 96 Bit (12 Byte) |
-| Nonce zufällig sicher | ✅ immer | ⚠️ Vorsicht bei >2^32 Msgs |
-| ARM / ohne AES-Hardware | ✅ Schnell | ⚠️ Langsam |
-| x86 mit AES-NI | ✅ Schnell | ✅ Sehr schnell |
-| Genutzt von | Signal, WireGuard, libsodium | TLS 1.3, HTTPS |
-| NIST-Standard | ❌ (IETF RFC 8439) | ✅ |
-| Empfohlen für | **Alle Geräte** | Server mit AES-NI |
+XChaCha20-Poly1305 gilt als **modernster Standard** für symmetrische Verschlüsselung:
 
-### AAD – Chunk-Binding (neu in v3)
+- Im Einsatz bei **Google, Cloudflare, Signal, WireGuard und OpenSSH**
+- **Keine Padding-Angriffe** möglich (im Gegensatz zu AES-CBC oder AES-ECB)
+- **192-bit Nonce** — Nonce-Wiederholungs-Kollisionen sind in der Praxis ausgeschlossen
+- Integrierte **Daten-Authentifizierung** (AEAD) — Manipulation wird zuverlässig erkannt
+- **Schneller als AES** auf Systemen ohne Hardware-AES-Beschleunigung (ältere CPUs, ARM)
+- Vom **IETF standardisiert** (RFC 8439)
 
-```python
-AAD = struct.pack(">I", chunk_index)     # 4 Bytes
-    + blake2b(salt, digest_size=28)      # 28 Bytes
-                                         # = 32 Bytes gesamt
-```
+### Warum 650.000 PBKDF2-Iterationen?
 
-→ Jeder Chunk ist an seine Position und den Salt gebunden.
-→ Chunks können nicht umgeordnet, ausgetauscht oder kopiert werden.
+Die Schlüsselableitung ist absichtlich langsam — das macht Brute-Force-Angriffe extrem teuer:
+
+- Auf einer **High-End-GPU** (RTX 4090): maximal einige Passwörter pro Sekunde testbar
+- Ein **12-stelliges zufälliges Passwort** würde bei Vollauslastung **Jahrhunderte** dauern zu knacken
+- Ein **20-stelliges Passwort** ist für jeden denkbaren Angreifer in absehbarer Zeit **nicht knackbar**
 
 ---
 
-## 📊 v2.0 vs v3.0
+## Vergleich mit anderen Programmen
 
-| Eigenschaft | v2.0 | v3.0 |
-|---|---|---|
-| Cipher | AES-256-GCM | **XChaCha20-Poly1305** |
-| Nonce-Größe | 96 Bit | **192 Bit** |
-| Nonce-Kollision | 1/2^32 bei 4 Mrd. Msgs | **Praktisch unmöglich** |
-| ARM / ohne AES-NI | Langsam | **Schnell** |
-| KDF | PBKDF2-SHA256 / 600K | **PBKDF2-SHA512 / 650K** |
-| MAC | HMAC-SHA256 (32 B) | **BLAKE2b-512 (64 B)** |
-| AAD Chunk-Binding | ❌ | ✅ |
-| Dateiendung | `.dgkn2` / `.key2` | `.dgkn3` / `.key3` |
-| Kompatibilität | — | Nicht zu v2 kompatibel |
+| Feature | **DGKN Crypto Suite** | VeraCrypt | BitLocker | 7-Zip (AES) | AxCrypt |
+|---------|:--------------------:|:---------:|:---------:|:-----------:|:-------:|
+| Kostenlos | ✅ | ✅ | ✅ (nur Win Pro) | ✅ | ⚠️ Freemium |
+| Open Source | ✅ | ✅ | ❌ | ✅ | ⚠️ teilweise |
+| Portable EXE (kein Setup) | ✅ | ❌ | ❌ | ✅ | ❌ |
+| Hidden Volumes | ✅ | ✅ | ❌ | ❌ | ❌ |
+| Keyfile-Support | ✅ | ✅ | ❌ | ❌ | ✅ |
+| Einzeldatei-Verschlüsselung | ✅ | ❌ | ❌ | ✅ | ✅ |
+| Emergency Wipe | ✅ | ❌ | ❌ | ❌ | ❌ |
+| Auto-Unmount | ✅ | ✅ | ❌ | ❌ | ❌ |
+| Header-Backup | ✅ | ✅ | ❌ | ❌ | ❌ |
+| Passwort ändern (in-place) | ✅ | ✅ | ✅ | ❌ | ✅ |
+| Modernes dunkles GUI | ✅ | ❌ veraltet | ✅ | ⚠️ | ✅ |
+| **XChaCha20-Poly1305** | ✅ | ❌ AES | ❌ AES | ❌ AES | ❌ AES |
+| Externer Sicherheitsaudit | ❌ | ✅ | ❌ | ❌ | ❌ |
+| Windows | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Linux / macOS | ⚠️ Quellcode | ✅ | ❌ | ✅ | ⚠️ |
 
-> v2 ist weiterhin im Repository unter `/v2/` verfügbar.
-
----
-
-## 📁 Projektstruktur
-
-```
-dgknCryptoSuite/
-│
-├── README.md                  ← Diese Datei (v3)
-├── LICENSE                    ← MIT
-├── requirements.txt
-│
-├── v3/                        ← Empfohlen
-│   └── dgkn_crypto_v3.py
-│
-└── v2/                        ← Legacy (AES-256-GCM)
-    └── dgkn_crypto_v2.py
-```
+**Fazit:**
+- **VeraCrypt** ist die Referenz für professionellen Enterprise-Einsatz mit externem Audit — aber kein portables EXE, kein modernes GUI, kein XChaCha20, kein Emergency Wipe
+- **BitLocker** ist tief ins Windows-System integriert — aber closed source, kein Hidden Volume, kein Keyfile
+- **DGKN Crypto Suite** kombiniert modernes GUI, modernsten Algorithmus (XChaCha20), Hidden Volumes und Emergency Wipe in einer einzigen portablen EXE-Datei — kostenlos und open source
 
 ---
 
-## 🔧 API – ohne GUI verwenden
+## Bekannte Einschränkungen
 
-```python
-from dgkn_crypto_v3 import CryptoEngineV3
+> **Die Software ist vollständig funktionsfähig** für den täglichen Einsatz. Die nachfolgenden Punkte sind bekannte Einschränkungen der aktuellen Version.
 
-# Datei verschlüsseln
-ok, enc_path, key_path, meta = CryptoEngineV3.encrypt_file(
-    src_path   = "geheim.pdf",
-    password   = "MeinSicheresPasswort!42",
-    output_dir = "./encrypted/",
-    secure_del = False,
-)
-if ok:
-    print(f"Algorithmus: {meta['algo']}")   # XChaCha20-Poly1305
-    print(f"MAC:         {meta['mac']}")    # BLAKE2b-512
+| # | Einschränkung | Schwere | Status |
+|---|--------------|---------|--------|
+| 1 | **Container-Integritätsprüfung unzuverlässig** — der Button ist vorhanden, aber die Prüfung liefert in manchen Fällen falsche Ergebnisse. **Bitte nicht für kritische Entscheidungen verwenden.** | Mittel | 🔧 Fix in Arbeit |
+| 2 | Passwörter liegen als Python-Strings im RAM und können nicht aktiv überschrieben werden | Gering (nur bei kompromittiertem System relevant) | 📋 Geplant |
+| 3 | GUI kann bei sehr großen Dateien (>1 GB Einzeldatei) kurz einfrieren | Kosmetisch | 📋 Geplant |
+| 4 | Keine native Linux/macOS EXE — Quellcode muss direkt ausgeführt werden | Gering | 📋 Geplant |
+| 5 | Kein unabhängiger Sicherheitsaudit der Implementierung | Vertrauen in Quellcode erforderlich | 📋 Langfristig |
 
-# Datei entschlüsseln
-ok, out_path, meta, _ = CryptoEngineV3.decrypt_file(
-    dgkn_path  = "geheim.dgkn3",
-    password   = "MeinSicheresPasswort!42",
-    key_path   = "geheim.key3",
-    output_dir = "./decrypted/",
-)
+---
+
+## Schnellstart
+
+### Container erstellen & Dateien sichern
+
+```
+1. dgkn_crypto_v5.exe starten
+2. „Neuen Container erstellen" → Pfad und Größe wählen
+3. Passwort A eingeben (optional: Keyfile hinzufügen)
+4. Optional: Passwort B + Größe für verstecktes Volume
+5. „Erstellen" klicken
+6. „Normales Volume" → Passwort eingeben → Explorer öffnet sich
+7. Dateien in den Ordner kopieren
+8. „Alle speichern & schließen" → alles wird verschlüsselt
+```
+
+### Einzeldatei direkt verschlüsseln
+
+```
+1. „Datei verschlüsseln" in der Seitenleiste
+2. Datei auswählen (Zieldatei wird automatisch gesetzt)
+3. Passwort eingeben → Enter
+→ datei.pdf wird zu datei.pdf.dgkn5, Original sicher gelöscht
+```
+
+### Einzeldatei entschlüsseln
+
+```
+1. „Datei entschlüsseln" in der Seitenleiste
+2. .dgkn5-Datei auswählen, Zieldatei LEER lassen
+3. Passwort eingeben → Enter
+→ Originaldatei wird wiederhergestellt, .dgkn5 sicher gelöscht
+```
+
+### Notfall
+
+```
+Ctrl + Shift + W → alle Volumes sofort sicher schließen
 ```
 
 ---
 
-## 🤝 Contributing
+## Tastenkürzel
+
+| Kürzel | Funktion |
+|--------|----------|
+| `Ctrl + O` | Container öffnen |
+| `Ctrl + M` | Alle Volumes speichern & schließen |
+| `Ctrl + Shift + W` | 🚨 Notfall-Wipe |
+| `Enter` | Dialog bestätigen |
+
+---
+
+## Quellcode ausführen (Linux / macOS)
 
 ```bash
-# Fork → Clone → Branch
-git checkout -b feature/mein-feature
-
-# Commit
-git commit -m "feat: Beschreibung"
-
-# Push → Pull Request
-git push origin feature/mein-feature
+git clone https://github.com/dogenc/dgknCryptoSuite.git
+cd dgknCryptoSuite
+pip install cryptography
+python dgkn_crypto_v5.py
 ```
 
-### Ideen für Contributions
-
-- [ ] 🌍 Englische Übersetzung
-- [ ] 🧪 Unit Tests (pytest)
-- [ ] 📦 pip-Package (`pip install dgkn-crypto`)
-- [ ] 🗂 Ordner-Verschlüsselung
-- [ ] 🖼 Screenshots & Demo-GIF
-- [ ] 📱 Mobile Version (Kivy)
----
-# DGKN Crypto Suite v3 im Vergleich: State-of-the-Art Kryptografie für höchste Sicherheitsansprüche
-
-Während viele etablierte Verschlüsselungstools auf teils jahrzehntealten Standards beharren, setzt die **DGKN Crypto Suite v3** auf ein vollständig modernisiertes, mehrschichtiges Sicherheitskonzept. Das Ergebnis: Überlegene Resistenz gegen Angriffe, optimierte Performance und eine zukunftssichere Architektur.
-
-Die folgende Tabelle vergleicht **DGKN Crypto Suite v3** mit gängigen Krypto-Apps und -Bibliotheken (wie VeraCrypt, Cryptomator, AxCrypt oder GPG):
-
-| Sicherheitsmerkmal | **DGKN Crypto Suite v3** | Gängige Krypto-Apps (Traditionell) | Der DGKN-Vorteil |
-|:---|:---|:---|:---|
-| **Verschlüsselungsalgorithmus** | **XChaCha20-Poly1305 (AEAD)** | AES-256-GCM oder AES-256-CBC (oft veraltet) | **Überlegen in Geschwindigkeit & Sicherheit:** XChaCha20 ist auf allen Systemen schnell (keine Hardwareabhängigkeit wie AES-NI). Der **192-Bit Nonce** erlaubt **zufällige Nonces ohne Kollisionsrisiko** – bei AES-GCM (96-Bit) führen Nonce-Fehler sofort zur Katastrophe. |
-| **Integritätssicherung (MAC)** | **BLAKE2b-512** (als Teil des AEAD) | HMAC-SHA256 oder reines Poly1305 | **Schneller & sicherer:** BLAKE2b ist in Software **deutlich schneller als SHA-2-Familie** und liefert einen **512-Bit MAC** – doppelte Sicherheitsmarge gegenüber HMAC-SHA256. |
-| **Schlüsselableitung (KDF)** | **PBKDF2-HMAC-SHA512** mit **650.000 Iterationen** (NIST 2024-konform) | PBKDF2 mit niedrigen Iterationen (10.000–100.000) oder veraltete Methoden | **Zukunftssicherheit pur:** Die Iterationsanzahl entspricht den **aktuellsten NIST-Empfehlungen (2024)** . Brute-Force-Angriffe werden so um ein Vielfaches teurer – Ihr Passwort bleibt auch in 10+ Jahren sicher. |
-| **Schlüsseltrennung** | **HKDF** – separate Schlüssel für Cipher, MAC und Metadaten | Ein einzelner Schlüssel für mehrere Zwecke | **Defense in Depth:** HKDF (RFC 5869) erzeugt **kryptografisch unabhängige Schlüssel** aus einem Master-Schlüssel. Selbst wenn ein Teilschlüssel kompromittiert wird, bleiben die anderen Bereiche sicher. |
-| **Nonce & Salt** | **192-Bit zufällige Nonce** + **256-Bit zufälliger Salt** pro Datei | 96-Bit Nonce (bei GCM) oder inkrementelle Zähler | **Maximale Zufälligkeit:** Die Nonce ist so groß, dass **Kollisionen praktisch unmöglich** sind. Der 256-Bit Salt pro Datei macht Wörterbuchangriffe selbst bei schwachen Passwörtern extrem aufwändig. |
-| **Authenticated Additional Data (AAD)** | **Chunk-Index + Salt-Hash** – fest an Ciphertext gebunden | Wird oft ignoriert oder nur oberflächlich genutzt | **Manipulationserkennung auf Meta-Ebene:** Jeder verschlüsselte Chunk ist untrennbar mit seinem Index und dem Datei-Salt verbunden. Chunk-Vertauschungen oder Zusammenbau aus verschiedenen Dateien werden **sofort erkannt**. |
-| **Entschlüsselungs-Logik** | **Authenticate-then-Decrypt** | Decrypt-then-Authenticate oder beides parallel | **Hardened Security:** Die MAC-Prüfung erfolgt **vor** der Entschlüsselung. Manipulierte Daten werden gar nicht erst entschlüsselt – das schließt viele Seitenkanal-Angriffe von vornherein aus. |
-| **Abhängigkeiten** | **Keine externen Bibliotheken** – vollständig eigene Implementierung | OpenSSL, libgcrypt oder andere externe Kryptobibliotheken | **Auditierbar & transparent:** Der gesamte Code liegt offen. Keine versteckten Fallstricke durch Drittanbieter-Bibliotheken. Sie sehen genau, was passiert. |
-| **RFC-Konformität** | **HChaCha20 nach RFC 7539** – korrekt implementiert | Oft proprietäre Abwandlungen oder vereinfachte Implementierungen | **Standardkonform:** Die Implementierung folgt genau den RFC-Vorgaben – das garantiert Kompatibilität mit anderen RFC-konformen Systemen und vermeidet Implementierungsfehler. |
-
-## Das Fazit
-
-**DGKN Crypto Suite v3** ist keine weitere "Noch-eine-Verschlüsselungs-App". Es ist eine **sorgfältig kuratierte Suite modernster kryptografischer Verfahren**:
-
-- ✅ **XChaCha20-Poly1305** – der Nachfolger von AES-GCM, ohne dessen Schwächen
-- ✅ **650.000 PBKDF2-Iterationen** – nach NIST 2024, nicht nach Standards von 2010
-- ✅ **HKDF + BLAKE2b** – moderne Schlüsselableitung und schnellste MACs
-- ✅ **Authenticate-then-Decrypt** – wie echte Sicherheitsprofis implementieren
-- ✅ **Zero externer Code** – 100% transparent, 100% kontrollierbar
-
-**DGKN Crypto Suite v3** setzt den Standard für das, was man von einer ernstzunehmenden Verschlüsselungslösung im Jahr 2024 und darüber hinaus erwarten darf.
+Einzige externe Abhängigkeit: `cryptography` — alles weitere ist Python-Standardbibliothek.
 
 ---
 
-## 🔬 Hintergrund
+## Lizenz
 
-Alle verwendeten Algorithmen wurden nach aktuellen wissenschaftlichen Empfehlungen ausgewählt und implementiert. Die Parameter (insbesondere die 650.000 PBKDF2-Iterationen) folgen den **NIST Digital Identity Guidelines 2024** und bieten damit eine Sicherheit, die viele kommerzielle Lösungen hinter sich lässt.
-
----
-
-**DGKN Crypto Suite v3 – Sicherheit, der Sie vertrauen können.**
----
----
-
-## ⚠️ Sicherheitshinweise
-
-> **Passwort vergessen = Daten unwiederbringlich verloren.**
-
-- `.dgkn3` und `.key3` **immer zusammen** aufbewahren
-- **Backups** der `.key3` Dateien anlegen
-- Empfohlene Passwortlänge: **≥ 16 Zeichen** (≥ 80 Bit Entropie)
-- `.dgkn3` Dateien sind **nicht kompatibel** mit v2
-
-### Sicherheitslücke melden
-
-Bitte **keine** öffentlichen Issues für Sicherheitslücken!
-→ GitHub Private Vulnerability Reporting verwenden.
+MIT License — kostenlos nutzbar, veränderbar und weitergabe-erlaubt.
 
 ---
 
-## 📜 Lizenz
+## Haftungsausschluss
 
-MIT License · Copyright (c) 2026 dogenc
+Diese Software wird ohne jegliche Garantie bereitgestellt. **Vergessene Passwörter können nicht wiederhergestellt werden.** Nach dem Erstellen eines Containers unbedingt ein **Header-Backup** anlegen und sicher aufbewahren. Der Entwickler übernimmt keine Haftung für Datenverlust.
 
 ---
 
 <div align="center">
 
-Made with ❤️ by [dogenc](https://github.com/dogenc)
+**[dogenc/dgknCryptoSuite](https://github.com/dogenc/dgknCryptoSuite)**
 
-⭐ **Wenn dir das Projekt gefällt – gib ihm einen Stern!** ⭐
+XChaCha20-Poly1305 · PBKDF2-SHA512 · BLAKE2b · Open Source · Kostenlos · Keine Installation
+
+*Sicherheit sollte für jeden zugänglich sein.*
 
 </div>
