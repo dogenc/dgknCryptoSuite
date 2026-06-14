@@ -1,0 +1,49 @@
+DGKN@Labs Crypto Suite — Evaluation License
+Copyright (c) 2026 DGKN@Labs. All rights reserved.
+
+This software and its source code (the "Software") are proprietary. The
+copyright holder retains all rights not expressly granted below.
+
+1. GRANT (EVALUATION USE)
+   You are granted a personal, non-exclusive, non-transferable, revocable,
+   royalty-free license to:
+     (a) download and view the source code, and
+     (b) build, install, and run the Software
+   for the sole purpose of personal, non-commercial evaluation and testing,
+   and to provide feedback to the copyright holder.
+
+2. RESTRICTIONS
+   Except as expressly permitted in Section 1, you may NOT, without the prior
+   written permission of the copyright holder:
+     (a) redistribute, publish, sublicense, sell, rent, or lease the Software
+         or any copy of it (in source or binary form);
+     (b) modify the Software or create derivative works of it for any purpose
+         other than your own private evaluation;
+     (c) use the Software in any production, commercial, or revenue-generating
+         setting;
+     (d) remove or alter any copyright, license, or attribution notices.
+
+3. FEEDBACK
+   If you choose to send feedback, suggestions, or bug reports, you grant the
+   copyright holder a perpetual, irrevocable, royalty-free right to use that
+   feedback to improve the Software, without obligation to you.
+
+4. NO WARRANTY / SECURITY
+   This Software is provided for EVALUATION ONLY and has not undergone an
+   independent security audit. Do not rely on it to protect data of real
+   value. See SECURITY.md for the documented threat model and limitations.
+
+5. TERM
+   This license is granted "as is" and may be revoked or changed at any time.
+   Future releases may be offered under different terms.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF,
+OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+For licensing inquiries (commercial use, redistribution, or anything beyond
+evaluation), contact the copyright holder.

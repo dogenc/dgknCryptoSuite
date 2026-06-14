@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "name": "dgkn-crypto-suite",
+  "version": "7.0.0",
+  "description": "DGKN@Labs Crypto Suite — native C++/Qt encrypted volume manager",
+  "homepage": "https://github.com/dogenc/dgknCryptoSuite",
+  "dependencies": [
+    "libsodium",
+    "argon2",
+    "nlohmann-json",
+    "catch2",
+    "libqrencode"
+  ],
+  "builtin-baseline": "9e53836916341b64a14162a78ba9802488034a5f",
+  "$comment-baseline": "Locks exact dependency versions for verifiable builds. Update with `git -C C:/vcpkg rev-parse HEAD` after intentionally upgrading deps."
+}
