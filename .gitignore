@@ -1,0 +1,56 @@
+# Build-Artefakte — alle build*-Verzeichnisse (build, build-rel, build-gui,
+# build-verify, out-of-source CMake-Builds …) generisch ausschließen.
+build/
+build*/
+out/
+cmake-build-*/
+dist/
+
+# Temporäre lokale Helfer-Skripte (nicht Teil des Projekts).
+_*.ps1
+*.obj
+*.exe
+*.lib
+*.pdb
+*.ilk
+
+# Container / Test-Artefakte
+*.dgkn
+*.txn
+*.hdrbak.json
+
+# Secrets / sensible Lauf-Artefakte — NIEMALS committen
+dgkn_2fa_local.json
+2fa.json
+**/security/2fa.json
+*.lock
+dgkn_audit.log
+dgkn_audit.log.key
+*.key
+*.pbm
+*.log
+aqtinstall.log
+
+# Private Schluessel / Zertifikate (Code-Signing etc.) — NIEMALS committen
+*.pfx
+*.p12
+*.pem
+*.crt
+*.cer
+*.env
+*.env.*
+
+# IDE
+.vs/
+.vscode/
+CMakeUserPresets.json
+
+# KI
+.claude/
+.github/copilot/
+.cursor/
+.aider*/
+CLAUDE.md
+GEMINI.md
+AGENTS.md
+docs/superpowers/

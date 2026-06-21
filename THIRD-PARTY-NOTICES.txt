@@ -1,0 +1,231 @@
+================================================================================
+DGKN@Labs Crypto Suite v7 — THIRD-PARTY SOFTWARE NOTICES
+================================================================================
+
+The DGKN@Labs Crypto Suite ("the Software") is itself licensed under the
+DGKN@Labs Evaluation License (see LICENSE). The Software is, however, built on
+and distributed together with the following third-party open-source components.
+Each remains under its own license, reproduced below. Nothing in the DGKN
+Evaluation License overrides or restricts the rights granted to you by these
+licenses with respect to the components themselves.
+
+These notices are provided to comply with the attribution and license-text
+requirements of the listed components. The full, unmodified license text of
+each component is included.
+
+--------------------------------------------------------------------------------
+COMPONENT OVERVIEW
+--------------------------------------------------------------------------------
+
+Component         License            Linkage            Shipped with installer?
+----------------  -----------------  -----------------  -----------------------
+libsodium         ISC                static (lib)       yes (compiled in)
+argon2 (PHC)      CC0-1.0 /          static (lib)       yes (compiled in)
+                  Apache-2.0 (dual)
+nlohmann/json     MIT                header-only        yes (compiled in)
+Qt 6              LGPL-3.0           dynamic (DLLs)      yes (separate DLLs)
+libqrencode       LGPL-2.1          dynamic/lib        yes
+WinFsp            GPLv3 or           dynamic (system    NO — installed
+                  commercial         DLL, not bundled)  separately by the user
+Catch2            BSL-1.0            test only          no (tests not shipped)
+vcpkg             MIT                build tooling      no (build only)
+
+LGPL NOTE (Qt 6, libqrencode):
+  These components are licensed under the GNU Lesser General Public License.
+  They are distributed as separate, dynamically-linked shared libraries (DLLs).
+  In accordance with the LGPL, you are entitled to replace these libraries with
+  your own modified versions. To do so, replace the corresponding DLL(s) next to
+  the application executable with a compatible build. The full LGPL license texts
+  are reproduced below and are also available from the upstream projects.
+
+GPL NOTE (WinFsp):
+  WinFsp is licensed under GPLv3 (or a separate commercial license from its
+  author). It is NOT bundled with or distributed by the DGKN Crypto Suite. The
+  user installs WinFsp independently from https://winfsp.dev. The Software merely
+  loads it at runtime if present. No part of the DGKN Crypto Suite is derived
+  from or statically linked against WinFsp source code.
+
+================================================================================
+1. libsodium — ISC License
+   https://libsodium.org  ·  https://github.com/jedisct1/libsodium
+================================================================================
+
+Copyright (c) 2013-2025 Frank Denis <j at pureftpd dot org>
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+================================================================================
+2. argon2 (PHC reference implementation) — dual CC0-1.0 / Apache-2.0
+   https://github.com/P-H-C/phc-winner-argon2
+================================================================================
+
+Copyright 2015
+Daniel Dinu, Dmitry Khovratovich, Jean-Philippe Aumasson, and Samuel Neves
+
+You may use this work under the terms of either of the following licenses at
+your option:
+
+  - Creative Commons CC0 1.0 Universal Public Domain Dedication
+    (https://creativecommons.org/publicdomain/zero/1.0/legalcode)
+  - The Apache License, Version 2.0
+    (https://www.apache.org/licenses/LICENSE-2.0)
+
+This software is distributed without any warranty of any kind. Under the CC0
+dedication, to the extent possible under law, the authors have waived all
+copyright and related or neighboring rights to this software.
+
+(The full text of the Apache License 2.0 is available at the URL above and is
+incorporated here by reference; under the CC0 option no attribution is legally
+required, but it is provided here as a courtesy.)
+
+================================================================================
+3. nlohmann/json — MIT License
+   https://github.com/nlohmann/json
+================================================================================
+
+Copyright (c) 2013-2025 Niels Lohmann <https://nlohmann.me>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+4. Qt 6 — GNU Lesser General Public License, version 3 (LGPL-3.0)
+   https://www.qt.io  ·  https://doc.qt.io/qt-6/licensing.html
+================================================================================
+
+Copyright (C) The Qt Company Ltd. and other contributors.
+
+The Qt 6 modules used by this Software (Qt Widgets, Qt OpenGL, Qt OpenGLWidgets,
+and their dependencies such as Qt Core and Qt Gui) are used under the terms of
+the GNU Lesser General Public License version 3 (LGPL-3.0).
+
+In accordance with the LGPL:
+  - Qt is distributed as separate, dynamically-linked shared libraries (the Qt
+    DLLs shipped alongside the application executable), NOT statically linked
+    into the application.
+  - You have the right to obtain, modify, and substitute your own build of the
+    corresponding Qt libraries. To exercise this right, replace the relevant Qt
+    DLL(s) located next to the application executable with a compatible Qt build.
+  - The complete corresponding source code of the Qt libraries is available from
+    The Qt Company at https://download.qt.io and https://code.qt.io.
+
+The LGPL-3.0 incorporates the terms of the GPL-3.0 by reference. The full text
+of both licenses is available at:
+  - LGPL-3.0:  https://www.gnu.org/licenses/lgpl-3.0.txt
+  - GPL-3.0:   https://www.gnu.org/licenses/gpl-3.0.txt
+
+A copy of these texts is included in this distribution (see the accompanying
+LGPL-3.0.txt and GPL-3.0.txt, or the URLs above).
+
+================================================================================
+5. libqrencode — GNU Lesser General Public License, version 2.1 (LGPL-2.1)
+   https://fukuchi.org/works/qrencode/  ·  https://github.com/fukuchik/qrencode
+================================================================================
+
+Copyright (C) 2006-2018 Kentaro Fukuchi <kentaro@fukuchi.org>
+
+libqrencode is free software; you can redistribute it and/or modify it under
+the terms of the GNU Lesser General Public License as published by the Free
+Software Foundation; either version 2.1 of the License, or (at your option) any
+later version.
+
+libqrencode is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+
+In accordance with the LGPL, this library is dynamically linked and may be
+replaced by the user with a compatible build. The full text of the LGPL-2.1 is
+available at: https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt
+A copy is included in this distribution (see the accompanying LGPL-2.1.txt).
+
+================================================================================
+6. WinFsp — GPLv3 (or commercial license) — NOT BUNDLED
+   https://winfsp.dev  ·  https://github.com/winfsp/winfsp
+================================================================================
+
+Copyright (C) Bill Zissimopoulos.
+
+WinFsp is licensed under the GNU General Public License version 3 (GPLv3), with
+a separate commercial licensing option offered by its author.
+
+WinFsp is NOT distributed as part of the DGKN@Labs Crypto Suite. End users
+install WinFsp themselves from https://winfsp.dev. The Software loads the WinFsp
+runtime DLL at runtime only if it is present on the system, in order to provide
+the optional virtual-drive (FUSE) feature. No WinFsp source code is incorporated
+into or statically linked with the Software.
+
+The full text of the GPLv3 is available at:
+  https://www.gnu.org/licenses/gpl-3.0.txt
+
+================================================================================
+7. Catch2 — Boost Software License 1.0 (BSL-1.0) — TEST ONLY, NOT SHIPPED
+   https://github.com/catchorg/Catch2
+================================================================================
+
+Copyright (c) Catch2 Authors.
+
+Catch2 is used solely for the project's automated test suite and is NOT part of
+the distributed application. It is listed here for completeness.
+
+Boost Software License - Version 1.0 - August 17th, 2003
+
+Permission is hereby granted, free of charge, to any person or organization
+obtaining a copy of the software and accompanying documentation covered by this
+license (the "Software") to use, reproduce, display, distribute, execute, and
+transmit the Software, and to prepare derivative works of the Software, and to
+permit third-parties to whom the Software is furnished to do so, all subject to
+the following:
+
+The copyright notices in the Software and this entire statement, including the
+above license grant, this restriction and the following disclaimer, must be
+included in all copies of the Software, in whole or in part, and all derivative
+works of the Software, unless such copies or derivative works are solely in the
+form of machine-executable object code generated by a source language processor.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE SOFTWARE BE LIABLE FOR ANY
+DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+================================================================================
+8. vcpkg — MIT License — BUILD TOOLING ONLY, NOT SHIPPED
+   https://github.com/microsoft/vcpkg
+================================================================================
+
+Copyright (c) Microsoft Corporation.
+
+vcpkg is used only to fetch and build dependencies during development and is NOT
+part of the distributed application. Licensed under the MIT License (text
+identical in form to the nlohmann/json MIT text reproduced in section 3 above).
+
+================================================================================
+END OF THIRD-PARTY NOTICES
+================================================================================

@@ -1,0 +1,3 @@
+// Windows-Ressource: bettet das App-Icon in die EXE ein (Taskleiste, Explorer).
+// IDI_ICON1 mit niedrigster ID wird von Windows als Anwendungs-Icon verwendet.
+IDI_ICON1 ICON "icon.ico"

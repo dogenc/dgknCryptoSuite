@@ -1,0 +1,39 @@
+# Zeilenenden konsistent halten — verhindert die "LF will be replaced by CRLF"-Warnungen
+# und sorgt dafür, dass das Repo auf Windows/Linux/macOS gleich aussieht.
+
+# Standard: Git entscheidet automatisch, im Repo werden LF gespeichert.
+* text=auto
+
+# Quellcode + Doku: explizit LF im Repo (normalisiert).
+*.cpp   text eol=lf
+*.hpp   text eol=lf
+*.h     text eol=lf
+*.c     text eol=lf
+*.txt   text eol=lf
+*.md    text eol=lf
+*.json  text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.cmake text eol=lf
+CMakeLists.txt text eol=lf
+
+# Lizenz-/Rechtsdateien: LF erzwingen, damit GitHub die GPLv3 korrekt erkennt
+# (sonst Anzeige "Other" statt "GPL-3.0").
+LICENSE   text eol=lf
+COPYRIGHT text eol=lf
+
+# Windows-spezifische Skripte: CRLF (PowerShell/Inno mögen das).
+*.ps1   text eol=crlf
+*.iss   text eol=crlf
+*.rc    text eol=crlf
+*.manifest text eol=crlf
+
+# Binärdateien: niemals als Text behandeln (kein eol-Umbau, kein diff-Müll).
+*.png   binary
+*.jpg   binary
+*.ico   binary
+*.svg   text eol=lf
+*.exe   binary
+*.dll   binary
+*.lib   binary
+*.qrc   text eol=lf
